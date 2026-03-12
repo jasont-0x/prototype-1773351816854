@@ -1,0 +1,43 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "How often are you eating more than you want to?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    {% if errors and errors["eating-frequency"] %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [{ text: errors["eating-frequency"], href: "#eating-frequency" }]
+    }) }}
+    {% endif %}
+
+    <form method="post" novalidate>
+    {{ govukRadios({
+      name: "eating-frequency",
+      fieldset: {
+        legend: {
+          text: "How often are you eating more than you want to?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: { text: "This could be any type of food or drink" },
+      errorMessage: errors["eating-frequency"] if errors else null,
+      value: data["eating-frequency"],
+      items: [
+        { value: "daily", text: "Daily" },
+        { value: "several-times-a-week", text: "Several times a week" },
+        { value: "once-a-week-or-less", text: "Once a week or less" },
+        { value: "this-was-a-one-off", text: "This was a one-off" }
+      ]
+    }) }}
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
