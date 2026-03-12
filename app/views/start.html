@@ -1,0 +1,23 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Get help with eating concerns" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Get help with eating concerns</h1>
+    <p class="govuk-body">Use this service to get support if you're worried about your eating habits.</p>
+    <p class="govuk-body">You will need:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Information about your current situation</li>
+      <li>Contact details</li>
+    </ul>
+    <p class="govuk-body">It takes around <strong>5 minutes</strong> to complete.</p>
+    {{ govukButton({
+      text: "Start now",
+      href: "/immediate-risk",
+      isStartButton: true
+    }) }}
+  </div>
+</div>
+{% endblock %}
