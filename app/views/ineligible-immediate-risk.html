@@ -1,0 +1,18 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "You cannot use this service" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    <h1 class="govuk-heading-xl">You cannot use this service</h1>
+    <p class="govuk-body">If you are having thoughts of harming yourself, you need immediate support. Call 999 if you are in immediate danger, or contact Samaritans on 116 123 (free, 24/7). You can also go to your nearest A&amp;E department.</p>
+    <h2 class="govuk-heading-m">What you can do</h2>
+    <p class="govuk-body">If you think this is wrong, <a href="/start" class="govuk-link">start again</a> or contact us for help.</p>
+
+  </div>
+</div>
+{% endblock %}
