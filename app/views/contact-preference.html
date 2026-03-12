@@ -1,0 +1,42 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "How would you prefer to be contacted?" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+
+    {% if errors and errors["contact-preference"] %}
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [{ text: errors["contact-preference"], href: "#contact-preference" }]
+    }) }}
+    {% endif %}
+
+    <form method="post" novalidate>
+    {{ govukRadios({
+      name: "contact-preference",
+      fieldset: {
+        legend: {
+          text: "How would you prefer to be contacted?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      errorMessage: errors["contact-preference"] if errors else null,
+      value: data["contact-preference"],
+      items: [
+        { value: "phone", text: "Phone" },
+        { value: "email", text: "Email" },
+        { value: "text-message", text: "Text message" },
+        { value: "post", text: "Post" }
+      ]
+    }) }}
+      {{ govukButton({ text: "Continue" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}
